@@ -10,13 +10,13 @@ bool Collision::IsHit(float x_1, float y_1, float width_1, float height_1, float
 	
 	float x0 = x_1;
 	float y0 = y_1;
-	float x1 = x_1 + width_1 - 1;
-	float y1 = y_1 + height_1 - 1;
+	float x1 = x_1 + width_1;
+	float y1 = y_1 + height_1;
 
 	float x2 = x_2;
 	float y2 = y_2;
-	float x3 = x_2 + width_2 - 1;
-	float y3 = y_2 + height_2 - 1;
+	float x3 = x_2 + width_2;
+	float y3 = y_2 + height_2;
 
 	//	二つの矩形が何かしらの形で重なっているか？
 	if (x0 < x3 && x2 < x1 && y0 < y3 && y2 < y1)

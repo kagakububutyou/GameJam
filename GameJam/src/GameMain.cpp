@@ -9,12 +9,18 @@ GameMain::GameMain()
 {
 	Player.reset(new CPlayer());
 	Enemy.reset(new CEnemy());
+	Enemy2.reset(new CEnemy2());
+	Boss.reset(new CBoss());
 }
 
 void GameMain::Update()
 {
-	Player->Update();
+
 	Enemy->Update();
+	Enemy2->Update();
+	//Boss->Update();
+	Player->Update();
+	
 }
 
 void GameMain::Draw()
@@ -24,7 +30,9 @@ void GameMain::Draw()
 
 
 	Enemy->Draw();
+	Enemy2->Draw();
 	Player->Draw();
+	//Boss->Draw();
 
 	// ‰æ–ÊXV
 	app_env->update();

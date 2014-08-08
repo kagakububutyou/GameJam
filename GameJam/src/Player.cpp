@@ -5,8 +5,8 @@
 CPlayer::CPlayer()
 {
 	
-	width = 16;
-	height = 32;
+	width = 48;
+	height = 96;
 	x = 100;
 	y = (-Window::HEIGHT / 2 + height);
 	Velocity_x = 0;

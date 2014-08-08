@@ -1,5 +1,4 @@
 #include "lib\appEnv.hpp"
-#include "lib\random.hpp"
 
 #include "Enemy.h"
 #include "main.h"
@@ -10,8 +9,8 @@
 
 CEnemy::CEnemy()
 {
-	width = 16;
-	height = 32;
+	width = 48;
+	height = 96;
 	x = 100;
 	y = 100;
 	Velocity_x = 0;
@@ -28,7 +27,15 @@ void CEnemy::Move()
 	{
 		y -= Velocity_y;
 	}
-
+	if (GM->Enemy->x > GM->Player->x){
+		Velocity_x = -Speed;;
+		x = x + Velocity_x;
+	}
+	else
+	{
+		Velocity_x = Speed;;
+		x = x + Velocity_x;
+	}
 	Velocity_y = -3.8f;
 }
 void CEnemy::Collision()

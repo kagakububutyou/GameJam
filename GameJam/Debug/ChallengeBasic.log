@@ -1,11 +1,13 @@
-﻿2014/08/08 9:07:18 にビルドを開始しました。
-     1>ノード 2 上のプロジェクト "C:\教材\GameJAM\ChallengeBasic7 - コピー\ChallengeBasic.vcxproj" (Build ターゲット)。
+﻿2014/08/08 11:15:13 にビルドを開始しました。
+     1>ノード 2 上のプロジェクト "C:\教材\GameJAM\GameJam\ChallengeBasic.vcxproj" (Build ターゲット)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D DEBUG /D _ITERATOR_DEBUG_LEVEL=0 /D PRODUCT_NAME=ChallengeBasic /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\Collision.cpp
-         Collision.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D DEBUG /D _ITERATOR_DEBUG_LEVEL=0 /D PRODUCT_NAME=ChallengeBasic /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\GameMain.cpp
+         GameMain.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\教材\GameJAM\ChallengeBasic7 - コピー\ChallengeBasic.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\教材\GameJAM\ChallengeBasic7 - コピー\ChallengeBasic.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"mainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\教材\GameJAM\ChallengeBasic7 - コピー\ChallengeBasic.lib" /MACHINE:X86 Debug\Collision.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\教材\GameJAM\GameJam\ChallengeBasic.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\教材\GameJAM\GameJam\ChallengeBasic.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"mainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\教材\GameJAM\GameJam\ChallengeBasic.lib" /MACHINE:X86 Debug\Boss.obj
+         Debug\Collision.obj
          Debug\Enemy.obj
+         Debug\Enemy2.obj
          Debug\GameMain.obj
          Debug\appEnv.obj
          Debug\audio.obj
@@ -23,9 +25,9 @@
          Debug\wav.obj
          Debug\main.obj
          Debug\Player.obj
-         ChallengeBasic.vcxproj -> C:\教材\GameJAM\ChallengeBasic7 - コピー\ChallengeBasic.exe
-     1>プロジェクト "C:\教材\GameJAM\ChallengeBasic7 - コピー\ChallengeBasic.vcxproj" (Build ターゲット) のビルドが完了しました。
+         ChallengeBasic.vcxproj -> C:\教材\GameJAM\GameJam\ChallengeBasic.exe
+     1>プロジェクト "C:\教材\GameJAM\GameJam\ChallengeBasic.vcxproj" (Build ターゲット) のビルドが完了しました。
 
 ビルドに成功しました。
 
-経過時間 00:00:05.17
+経過時間 00:00:05.48
