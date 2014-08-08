@@ -1,12 +1,14 @@
 #include "Player.h"
 #include "main.h"
+#include "GameMain.h"
 #include "lib\appEnv.hpp"
 
-CPlayer::CPlayer()
+CPlayer::CPlayer() : Player1("res/SCN_0003 3A.png"),Player2("res/SCN_0003 3B.png")
 {
-	
-	width = 48;
-	height = 96;
+
+
+	width = 128;
+	height = 128;
 	x = 100;
 	y = (-Window::HEIGHT / 2 + height);
 	Velocity_x = 0;
@@ -30,14 +32,14 @@ void CPlayer::Move()
 	{
 		force--;
 		y += force;
-		if (y < -Window::HEIGHT / 2 + height)
+		if (y < -Window::HEIGHT / 2 + Margin)
 		{
 			y -= Velocity_y;
 			State = STATE::NORMAL;
 		}
 	}
 
-	if (y < -Window::HEIGHT/2 + height)
+	if (y < -Window::HEIGHT / 2 + Margin)
 	{
 		y -= Velocity_y;
 	}
@@ -45,12 +47,14 @@ void CPlayer::Move()
 	//	‰E
 	if (app_env->isPressKey(GLFW_KEY_RIGHT))
 	{
+		Speed = 5;
 		Velocity_x = Speed;
 	}
 	//	¶
 	else if (app_env->isPressKey(GLFW_KEY_LEFT))
 	{
-		Velocity_x = -Speed;
+		Speed = -5;
+		Velocity_x = Speed;
 	}
 	else
 	{
@@ -62,7 +66,21 @@ void CPlayer::Move()
 
 void CPlayer::Draw()
 {
+	
 	drawFillBox(x, y, width, height, color);
+	if (Speed > 0)
+	{
+		drawTextureBox(x, y, width, height, 0, 0, 128, 128, Player2, Color(1, 1, 1));
+	}
+	if (Speed < 0)
+	{
+		drawTextureBox(x, y, width, height, 0, 0, 128, 128, Player1, Color(1, 1, 1));
+	}
+
+	if (app_env->isPressKey(GLFW_KEY_SPACE))
+	{
+		GM->Blade->Draw();
+	}
 
 }
 void CPlayer::Update()

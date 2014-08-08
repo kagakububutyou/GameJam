@@ -83,6 +83,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Blade.cpp" />
     <ClCompile Include="src\Boss.cpp" />
     <ClCompile Include="src\Collision.cpp" />
     <ClCompile Include="src\Enemy.cpp" />
@@ -106,6 +107,7 @@
     <ClCompile Include="src\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Blade.h" />
     <ClInclude Include="src\Boss.h" />
     <ClInclude Include="src\Collision.h" />
     <ClInclude Include="src\Enemy.h" />

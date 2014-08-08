@@ -7,6 +7,10 @@ public:
 	CPlayer();
 	~CPlayer(){}
 
+	Texture Player1;
+	Texture Player2;
+
+
 	enum STATE
 	{
 		NORMAL,

@@ -15,6 +15,16 @@ public:
 	float Velocity_y;	//	ë¨ìx
 	float Speed;
 
+	const static int Margin = 32;	//	ó]îí
+
+	float shotLR;
+	float shot_x;
+	float shot_y;
+	float shotcount;
+	float shotflag;
+	float shotwidth;
+	float shotheight;
+
 	Color color;	//	êF
 
 	virtual void Move(){}

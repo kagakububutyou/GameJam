@@ -13,6 +13,8 @@ public:
 	void Update();
 	void Collision();
 
+	void Attack();
+
 	//const float shot;
 
 };

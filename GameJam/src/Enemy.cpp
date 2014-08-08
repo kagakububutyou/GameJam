@@ -23,10 +23,11 @@ CEnemy::CEnemy()
 void CEnemy::Move()
 {
 	y += Velocity_y;
-	if (y < -Window::HEIGHT / 2 + height)
+	if (y < -Window::HEIGHT / 2 + Margin)
 	{
 		y -= Velocity_y;
 	}
+	/*
 	if (GM->Enemy->x > GM->Player->x){
 		Velocity_x = -Speed;;
 		x = x + Velocity_x;
@@ -35,18 +36,26 @@ void CEnemy::Move()
 	{
 		Velocity_x = Speed;;
 		x = x + Velocity_x;
-	}
+	}*/
 	Velocity_y = -3.8f;
 }
 void CEnemy::Collision()
 {
-	if (Collision::IsHit(GM->Enemy->x, GM->Enemy->y, GM->Enemy->width, GM->Enemy->height, GM->Player->x, GM->Player->y, GM->Player->width, GM->Player->height))
+	
+	if (Collision::IsHit(x, y,width, height, GM->Player->x, GM->Player->y, GM->Player->width, GM->Player->height))
 	{
 		color = Color(0, 1, 0, 1);
 	}
 	else
 	{
 		color = Color(1, 0, 0, 1);
+	}
+	if (app_env->isPressKey(GLFW_KEY_SPACE))
+	{
+		if (Collision::IsHit(x, y, width, height, GM->Blade->x, GM->Blade->y, GM->Blade->width, GM->Blade->height))
+		{
+			color = Color(0, 0, 1, 1);
+		}
 	}
 }
 void CEnemy::Update()
