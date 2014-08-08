@@ -7,22 +7,26 @@
 
 
 
-CEnemy::CEnemy()
+CEnemy::CEnemy(float x)
 {
 	width = 48;
 	height = 96;
-	x = 100;
-	y = 100;
+	this->x = x;
+	y = (-Window::HEIGHT / 2 + height);
+	MapX = this->x;
 	Velocity_x = 0;
 	Velocity_y = 0;
-	Speed = 5;
+	Speed = 2;
+	Direction = 0;
 
 	color = Color(1, 0, 0, 1);
 }
 
 void CEnemy::Move()
 {
+	x = MapX - GM->Player->ScrollX;
 	y += Velocity_y;
+	MapX += Velocity_x;
 	if (y < -Window::HEIGHT / 2 + Margin)
 	{
 		y -= Velocity_y;
@@ -37,6 +41,28 @@ void CEnemy::Move()
 		Velocity_x = Speed;;
 		x = x + Velocity_x;
 	}*/
+
+	if (GM->Player->x + GM->Player->ScrollX - MapX < Window::WIDTH / 2 && GM->Player->x + GM->Player->ScrollX - MapX > -Window::WIDTH / 2)
+	{
+		if (MapX > GM->Player->x + GM->Player->ScrollX){
+			Velocity_x = -Speed;
+			//x = x + Velocity_x;
+			Direction = 0;
+			//color = Color(1, 1, 0, 1);
+		}
+		else 
+		{
+			Velocity_x = Speed;
+			//x = x + Velocity_x;
+			Direction = 1;
+			//color = Color(0, 1, 1, 1);
+		}
+	}
+	else
+	{
+		Velocity_x = 0;
+	}
+	//*/
 	Velocity_y = -3.8f;
 }
 void CEnemy::Collision()
@@ -50,11 +76,11 @@ void CEnemy::Collision()
 	{
 		color = Color(1, 0, 0, 1);
 	}
-	if (app_env->isPressKey(GLFW_KEY_SPACE))
+	if (app_env->isPushKey(GLFW_KEY_SPACE) || GM->Player->Rush == 1)
 	{
 		if (Collision::IsHit(x, y, width, height, GM->Blade->x, GM->Blade->y, GM->Blade->width, GM->Blade->height))
 		{
-			color = Color(0, 0, 1, 1);
+  			color = Color(0, 0, 1, 1);
 		}
 	}
 }
@@ -66,4 +92,13 @@ void CEnemy::Update()
 void CEnemy::Draw()
 {
 	drawFillBox(x, y, width, height, color);
+
+	if (Direction == 0)
+	{
+		drawFillBox(x, y, width, height, color);
+	}
+	else
+	{
+		drawFillBox(x, y, width, height, color);
+	}
 }

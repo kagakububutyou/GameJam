@@ -4,7 +4,7 @@
 class CEnemy2 : public COBJECT
 {
 public:
-	CEnemy2();
+	CEnemy2(float x);
 	~CEnemy2(){};
 	
 

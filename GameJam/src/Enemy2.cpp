@@ -6,19 +6,20 @@
 #include "GameMain.h"
 #include "Collision.h"
 
-CEnemy2::CEnemy2()
+CEnemy2::CEnemy2(float x)
 {
-	width = 25;
-	height = 50;
-	x = 300;
-	y = (-Window::HEIGHT / 2 + height);;
+	width = 48;
+	height = 96;
+	this->x = x;
+	y = (-Window::HEIGHT / 2 + height);
+	MapX = this->x;
 	Velocity_x = 0;
 	Velocity_y = 0;
 	Speed = 2;
 
 	color = Color(1, 0, 0, 1);
 
-	shotLR = 0;
+	Direction = 0;
 	shotflag = 0;
 	shot_x = x;
 	shot_y = y + height / 2;
@@ -31,6 +32,7 @@ CEnemy2::CEnemy2()
 
 void CEnemy2::Move()
 {
+	x = MapX - GM->Player->ScrollX;
 	y += Velocity_y;
 	if (y < -Window::HEIGHT / 2 + Margin)
 	{
@@ -39,6 +41,15 @@ void CEnemy2::Move()
 
 	Velocity_y = -3.8f;
 
+	if (x > GM->Player->x){
+		Direction = 0;
+		//color = Color(1, 1, 0, 1);
+	}
+	else
+	{
+		Direction = 1;
+		//color = Color(0, 1, 1, 1);
+	}
 
 
 }
@@ -50,19 +61,19 @@ void CEnemy2::Attack()
 	}
 
 	if (shotflag == 1){
-		if (GM->Enemy2->x > GM->Player->x){
-			shotLR = 1;   //shot_x -= 5;
+		if (x > GM->Player->x){
+			Direction = 1;   //shot_x -= 5;
 		}
 		else
 		{
-			shotLR = 2;	//shot_x += 5;
+			Direction = 2;	//shot_x += 5;
 		}
 
 	}
-	if (shotLR == 1)
+	if (Direction == 1)
 		shot_x -= 5;
 
-	if (shotLR == 2)
+	if (Direction == 2)
 		shot_x += 5;
 
 	if (shotflag == 1)
@@ -74,28 +85,38 @@ void CEnemy2::Attack()
 		shot_y = y + height / 2;
 	}
 
-	if (Collision::IsHit(GM->Enemy2->shot_x, GM->Enemy2->shot_y, GM->Enemy2->shotwidth, GM->Enemy2->shotheight, GM->Enemy->x, GM->Enemy->y, GM->Enemy->width, GM->Enemy->height))
+	for (auto &i : GM->enemy)
 	{
-		color = Color(0, 0, 1, 1);
-		shotflag = 0;
-		shot_x = x;
-		shot_y = y + height / 2;
-	}
-	else
-	{
-		color = Color(0, 0, 1, 1);
+		if (Collision::IsHit(shot_x, shot_y, shotwidth, shotheight, i->x, i->y, i->width, i->height))
+		{
+			color = Color(0, 0, 1, 1);
+			shotflag = 0;
+			shot_x = x;
+			shot_y = y + height / 2;
+		}
+		else
+		{
+			color = Color(0, 0, 1, 1);
+		}
 	}
 
 }
 void CEnemy2::Collision()
 {
-	if (Collision::IsHit(GM->Enemy2->x, GM->Enemy2->y, GM->Enemy2->width, GM->Enemy2->height, GM->Player->x, GM->Player->y, GM->Player->width, GM->Player->height))
+	if (Collision::IsHit(x, y,width,height, GM->Player->x, GM->Player->y, GM->Player->width, GM->Player->height))
 	{
 		color = Color(0, 1, 0, 1);
 	}
 	else
 	{
 		color = Color(0, 0, 1, 1);
+	}
+	if (app_env->isPressKey(GLFW_KEY_SPACE))
+	{
+		if (Collision::IsHit(x, y, width, height, GM->Blade->x, GM->Blade->y, GM->Blade->width, GM->Blade->height))
+		{
+			color = Color(1, 0, 1, 1);
+		}
 	}
 }
 void CEnemy2::Update()
@@ -105,7 +126,14 @@ void CEnemy2::Update()
 }
 void CEnemy2::Draw()
 {
-	drawFillBox(x, y, width, height, color);
+	if (Direction == 0)
+	{
+		drawFillBox(x, y, width, height, color);
+	}
+	else
+	{
+		drawFillBox(x, y, width, height, color);
+	}
 	Attack();
 
 }

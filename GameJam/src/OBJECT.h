@@ -14,16 +14,22 @@ public:
 	float Velocity_x;	//	速度
 	float Velocity_y;	//	速度
 	float Speed;
+	float Rush;
 
-	const static int Margin = 32;	//	余白
+	float ScrollX;	//	スクロール
+	float MapX;
+	const static int Margin = 64;	//	余白
 
-	float shotLR;
-	float shot_x;
-	float shot_y;
-	float shotcount;
-	float shotflag;
-	float shotwidth;
-	float shotheight;
+	float Direction;
+	float shotdirection;		//弾の向き
+	float shot_x;		//弾の座標
+	float shot_y;		//弾の座標
+	float shottime;		//弾が打たれる時間
+	float shotcount;	//弾が打たれる時間を減らす
+	float shotflag;		//弾が打たれているかのフラグ
+	float shotwidth;	//弾の大きさ
+	float shotheight;	//弾の大きさ
+	float shotspeed;	//弾の速さ
 
 	Color color;	//	色
 

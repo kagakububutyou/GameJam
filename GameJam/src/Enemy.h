@@ -4,7 +4,7 @@
 class CEnemy :public COBJECT
 {
 public:
-	CEnemy();
+	CEnemy(float x);
 	~CEnemy(){};
 
 	void Move();
