@@ -1,5 +1,6 @@
 #include "lib\appEnv.hpp"
 #include "GameMain.h"
+#include "main.h"
 
 
 GameMain *GM;
@@ -7,17 +8,26 @@ GameMain *GM;
 GameMain::GameMain()
 {
 	Player.reset(new CPlayer());
+	Enemy.reset(new CEnemy());
 }
 
 void GameMain::Update()
 {
 	Player->Update();
+	Enemy->Update();
 }
 
 void GameMain::Draw()
 {
+	// •`‰æ€”õ
+	app_env->setupDraw();
+
+
+	Enemy->Draw();
 	Player->Draw();
-	drawBox(100, 150, 50, 50, 1, color256(255, 0, 255, 255));
+
+	// ‰æ–ÊXV
+	app_env->update();
 }
 
 void GameMain::Main()

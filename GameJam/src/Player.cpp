@@ -4,19 +4,44 @@
 
 CPlayer::CPlayer()
 {
-	x = 100;
-	y = 100;
+	
 	width = 16;
 	height = 32;
+	x = 100;
+	y = (-Window::HEIGHT / 2 + height);
 	Velocity_x = 0;
+	Velocity_y = 0;
 	Speed = 5;
 
 	color = Color(1,1,1,1);
 }
-void CPlayer::Mover()
+void CPlayer::Move()
 {
 	x += Velocity_x;
+	y += Velocity_y;
 	
+	if (app_env->isPressKey(GLFW_KEY_UP) && State != STATE::JUNP)
+	{
+		force = 13;
+		State = STATE::JUNP;
+	}
+
+	if (State == STATE::JUNP)
+	{
+		force--;
+		y += force;
+		if (y < -Window::HEIGHT / 2 + height)
+		{
+			y -= Velocity_y;
+			State = STATE::NORMAL;
+		}
+	}
+
+	if (y < -Window::HEIGHT/2 + height)
+	{
+		y -= Velocity_y;
+	}
+
 	//	‰E
 	if (app_env->isPressKey(GLFW_KEY_RIGHT))
 	{
@@ -31,6 +56,7 @@ void CPlayer::Mover()
 	{
 		Velocity_x = 0;
 	}
+	Velocity_y = -3.8f;
 }
 
 
@@ -41,6 +67,6 @@ void CPlayer::Draw()
 }
 void CPlayer::Update()
 {
-	Mover();
+	Move();
 
 }

@@ -2,13 +2,24 @@
 #include "OBJECT.h"
 class CPlayer :public COBJECT
 {
+	float force;
 public:
 	CPlayer();
 	~CPlayer(){}
 
-	void Mover();
+	enum STATE
+	{
+		NORMAL,
+		JUNP,
+
+	};
+
+	STATE State;
+
+	void Move();
 	void Draw();
 	void Update();
+	//void Collision();
 
 };
 
